@@ -1,0 +1,7 @@
+transformers
+scikit-learn
+accelerate
+huggingface_hub
+numpy
+pandas
+requests
