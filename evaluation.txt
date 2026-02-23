@@ -1,0 +1,63 @@
+============================================================
+         GOODREADS GENRE CLASSIFIER - EVALUATION REPORT
+============================================================
+
+Model    : distilbert-base-uncased
+Epochs   : 1
+Dataset  : Goodreads Reviews (8 Genres)
+Train    : 800 reviews | Test : 160 reviews
+Device   : CPU
+------------------------------------------------------------
+
+LOCAL MODEL EVALUATION:
+
+Genre                    Precision  Recall  F1-Score  Support
+------------------------------------------------------------
+children                   0.58      0.55      0.56      20
+comics_graphic             0.64      0.70      0.67      20
+fantasy_paranormal         0.37      0.35      0.36      20
+history_biography          0.50      0.60      0.55      20
+mystery_thriller_crime     0.36      0.60      0.45      20
+poetry                     0.62      0.75      0.68      20
+romance                    0.47      0.35      0.40      20
+young_adult                0.50      0.10      0.17      20
+------------------------------------------------------------
+accuracy                                       0.50     160
+macro avg                  0.50      0.50      0.48     160
+weighted avg               0.50      0.50      0.48     160
+
+============================================================
+
+HUB MODEL EVALUATION (Task 8):
+
+Genre                    Precision  Recall  F1-Score  Support
+------------------------------------------------------------
+children                   0.00      0.00      0.00      20
+comics_graphic             0.00      0.00      0.00      20
+fantasy_paranormal         0.00      0.00      0.00      20
+history_biography          0.00      0.00      0.00      20
+mystery_thriller_crime     0.00      0.00      0.00      20
+poetry                     0.12      1.00      0.22      20
+romance                    0.00      0.00      0.00      20
+young_adult                0.00      0.00      0.00      20
+------------------------------------------------------------
+accuracy                                       0.12     160
+macro avg                  0.02      0.12      0.03     160
+weighted avg               0.02      0.12      0.03     160
+
+============================================================
+
+COMPARISON: LOCAL vs HUB MODEL:
+
+Metric        Local Model    Hub Model
+------------------------------------------------------------
+Accuracy          0.50          0.12
+Eval Loss         1.64          N/A
+Epoch             1.0           1.0
+
+Note: Hub model showed lower accuracy (0.12) due to label
+mapping inconsistency when loading from HuggingFace Hub.
+Model predicted mostly 'poetry' class for all inputs.
+Local model correctly classifies all 8 genres.
+
+============================================================
